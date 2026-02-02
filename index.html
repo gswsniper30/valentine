@@ -1,173 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentines</title>
-    <style>
-        :root {
-            --ui-pink: #ff8fa3;
-            --text-dark: #4a4a4a;
-            --accent: #ff4d6d;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentines</title>
 
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #fff0f3;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
-        }
+  <style>
+    :root {
+      --ui-pink: #ff8fa3;
+      --text-dark: #4a4a4a;
+      --accent: #ff4d6d;
+    }
 
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff0f3;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
 
-        .stage {
-            width: 520px;
-            height: 550px;
-            background: white;
-            border: 6px solid var(--ui-pink);
-            border-radius: 15px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            padding: 25px;
-            box-shadow: 0 20px 0px #ffb3c1;
-            z-index: 10;
-        }
+    .stage {
+      width: 520px;
+      height: 550px;
+      background: white;
+      border: 6px solid var(--ui-pink);
+      border-radius: 15px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      box-shadow: 0 20px 0px #ffb3c1;
+      z-index: 10;
+    }
 
-        .sprite-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 70px; 
-            transition: all 0.3s ease;
-            text-align: center;
-            white-space: nowrap;
-        }
+    .sprite-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 70px;
+      transition: all 0.3s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
 
-        .dialogue-box {
-            height: 120px;
-            background: #fff5f7;
-            border: 3px solid var(--ui-pink);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 10px;
-            position: relative;
-        }
+    .dialogue-box {
+      height: 120px;
+      background: #fff5f7;
+      border: 3px solid var(--ui-pink);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
+      position: relative;
+    }
 
-        .char-name {
-            position: absolute;
-            top: -15px;
-            left: 15px;
-            background: var(--ui-pink);
-            color: white;
-            padding: 2px 12px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
+    .char-name {
+      position: absolute;
+      top: -15px;
+      left: 15px;
+      background: var(--ui-pink);
+      color: white;
+      padding: 2px 12px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
 
-        .text-content {
-            font-size: 16px;
-            line-height: 1.4;
-            color: var(--text-dark);
-        }
+    .text-content {
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--text-dark);
+    }
 
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 110px;
-        }
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+      min-height: 110px;
+      position: relative;
+    }
 
-        .btn {
-            padding: 12px 28px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            white-space: nowrap;
-        }
+    .btn {
+      padding: 12px 28px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.15s ease-in-out;
+      white-space: nowrap;
+    }
 
-        #yesBtn { background: var(--accent); color: white; font-size: 18px; z-index: 100; }
-        #noBtn { background: #ddd; color: #777; font-size: 16px; }
+    #yesBtn {
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      z-index: 100;
+    }
 
-        .btn:hover { transform: scale(1.05); }
+    #noBtn {
+      background: #ddd;
+      color: #777;
+      font-size: 16px;
+      position: absolute;
+    }
 
-        .heart { 
-            position: fixed; 
-            pointer-events: none; 
-            animation: fly 3s linear forwards; 
-            font-size: 24px;
-            z-index: 1;
-        }
-        @keyframes fly { 
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-    </style>
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: fixed;
+      pointer-events: none;
+      animation: fly 3s linear forwards;
+      font-size: 24px;
+      z-index: 1;
+    }
+
+    @keyframes fly {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .full-yes {
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      border-radius: 0 !important;
+      font-size: clamp(48px, 8vw, 110px) !important;
+      padding: 0 !important;
+      z-index: 9999 !important;
+      transform: none !important;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="stage">
+    <div class="sprite-container" id="sprite">ฅ(•ㅅ•)ฅ</div>
 
-    <div class="stage">
-        <div class="sprite-container" id="sprite">ฅ(•ㅅ•)ฅ</div>
-
-        <div class="dialogue-box">
-            <div class="char-name">Mochi the Cat</div>
-            <div class="text-content" id="dialogue">
-                "I have a very important quest for you. Will you be my Valentine?"
-            </div>
-        </div>
-
-        <div class="controls" id="controls">
-            <button class="btn" id="yesBtn" onclick="win()">YES</button>
-            <button class="btn" id="noBtn" onclick="nextStep()">NO</button>
-        </div>
+    <div class="dialogue-box">
+      <div class="char-name">Mochi the Cat</div>
+      <div class="text-content" id="dialogue">
+        "I have a very important quest for you. Will you be my Valentine?"
+      </div>
     </div>
 
-    <script>
-        const sprite = document.getElementById('sprite');
-        const dialogue = document.getElementById('dialogue');
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
+    <div class="controls" id="controls">
+      <button class="btn" id="yesBtn" onclick="win()">YES</button>
+      <button class="btn" id="noBtn">NO</button>
+    </div>
+  </div>
 
-        function nextStep() {
-            sprite.innerText = "ฅ(๑oᆺo๑)ฅ";
-            dialogue.innerText = "\"Wait! Are you sure? (There is no other choice, Traveler...)\"";
-            
-            noBtn.style.display = 'none';
-            
-            yesBtn.style.fontSize = "36px";
-            yesBtn.style.padding = "25px 60px";
-        }
+  <script>
+    const sprite = document.getElementById("sprite");
+    const dialogue = document.getElementById("dialogue");
+    const controls = document.getElementById("controls");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
 
-        function win() {
-            sprite.innerText = "ฅ(⌯͒• ɪ •⌯͒)ฅ";
-            sprite.style.color = "#ff4d6d";
-            sprite.style.fontSize = "80px"; 
-            
-            dialogue.innerText = '"Quest Complete! You chose the True Ending! Happy Valentines!"';
-            
-            // Hide both buttons at the end
-            noBtn.style.display = 'none';
-            yesBtn.style.display = 'none';
-            
-            setInterval(() => {
-                const h = document.createElement('div');
-                h.className = 'heart';
-                h.innerHTML = '❤️';
-                h.style.left = Math.random() * 100 + 'vw';
-                h.style.top = '100vh';
-                document.body.appendChild(h);
-                setTimeout(() => h.remove(), 3000);
-            }, 150);
-        }
-    </script>
+    let yesScale = 1;
+    let noClicks = 0;
+    const maxNoClicks = 5;
+
+    function moveNoButton() {
+      const areaRect = controls.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      const padding = 8;
+
+      const maxX = areaRect.width - btnRect.width - padding;
+      const maxY = areaRect.height - btnRect.height - padding;
+
+      const x = Math.random() * Math.max(0, maxX);
+      const y = Math.random() * Math.max(0, maxY);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function makeYesFullscreen() {
+      noBtn.style.display = "none";
+      document.querySelector(".stage").style.opacity = "0";
+      document.querySelector(".stage").style.pointerEvents = "none";
+      yesBtn.classList.add("full-yes");
+      yesBtn.textContent = "YES";
+      yesBtn.focus();
+    }
+
+    moveNoButton();
+
+    noBtn.addEventListener("click", () => {
+      if (noClicks >= maxNoClicks) return;
+
+      noClicks++;
+      moveNoButton();
+
+      yesScale *= 1.05;
+      yesBtn.style.transform = `scale(${yesScale})`;
+
+      sprite.innerText = "ฅ(๑•̀ㅁ•́๑)ฅ";
+      dialogue.innerText = `"No" clicks: ${noClicks}/${maxNoClicks}`;
+
+      if (noClicks === maxNoClicks) {
+        makeYesFullscreen();
+      }
+    });
+
+    function win() {
+      sprite.innerText = "ฅ(⌯͒• ɪ •⌯͒)ฅ";
+      sprite.style.color = "#ff4d6d";
+      sprite.style.fontSize = "80px";
+
+      dialogue.innerText = '"Quest Complete! You chose the True Ending! Happy Valentines!"';
+
+      noBtn.style.display = "none";
+      yesBtn.style.display = "none";
+
+      setInterval(() => {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.top = "100vh";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 3000);
+      }, 150);
+    }
+  </script>
 </body>
 </html>
