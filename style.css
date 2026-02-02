@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050b1a;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px 20px;
+  color: white;
+}
+
+.title {
+  color: #5cff6f;
+  font-size: 70px;
+  font-weight: 900;
+  margin-bottom: 35px;
+}
+
+.card {
+  background: white;
+  width: min(700px, 95%);
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 45px 35px;
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+.question {
+  font-size: 42px;
+  color: #ff3b74;
+  font-weight: 900;
+}
+
+.bear {
+  width: 260px;
+  margin: 25px 0;
+}
+
+.buttons {
+  position: relative;
+  height: 110px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 18px 55px;
+  border-radius: 40px;
+  border: none;
+  font-size: 26px;
+  font-weight: 800;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.12s;
+}
+
+#yesBtn {
+  background: #ff3b74;
+  color: white;
+  left: 160px;
+}
+
+#noBtn {
+  background: white;
+  border: 3px solid #ff3b74;
+  color: #ff3b74;
+  right: 160px;
+}
